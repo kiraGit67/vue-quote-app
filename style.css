@@ -51,6 +51,16 @@ button {
   border: 2px solid black;
   font-size: 0.8rem;
   text-transform: uppercase;
+  box-shadow: 2px 2px 0 red;
+  transition: background-color 1s ease-in-out, color 1s ease-in-out,
+    box-shadow 1s ease-in-out;
+}
+
+button:hover {
+  background-color: red;
+  border-color: red;
+  color: white;
+  box-shadow: 3px 3px 0 lightgrey;
 }
 
 main {
