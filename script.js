@@ -20,13 +20,26 @@ Vue.createApp({
       const quote = fetch(this.apiURL);
 
       quote
-        .then((response) => {
-          return response.json();
-        })
+        .then(
+          (response) => {
+            console.log(response.ok);
+            return response.json();
+          },
+          (err) => {
+            debugger;
+            console.log("Fehler aufgetreten: ", err);
+          }
+        )
         .then((data) => {
           this.randomQuote = data.quote;
           this.randomAuthor = "- " + data.author;
         });
+    },
+    async getNewQuote() {
+      const response = await fetch(this.apiURL);
+      const quoteData = await response.json();
+      this.randomQuote = quoteData.quote;
+      this.randomAuthor = "- " + quoteData.author;
     },
   },
 }).mount("#app");
